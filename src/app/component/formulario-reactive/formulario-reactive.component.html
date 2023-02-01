@@ -1,0 +1,31 @@
+<main class="form-signin w-100 m-auto">
+    <form [formGroup]="formlogin" (ngSubmit)="login()">
+      
+      <h1 class="h3 mb-3 fw-normal">Registrarse</h1>
+  
+      <div class="form-floating">
+        <input formControlName="correo" type="email" class="form-control" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+        <div class="valido" *ngIf="formlogin.controls['correo'].touched && formlogin.controls['correo'].valid"> Valido</div>
+      <div class="invalido" *ngIf="formlogin.controls['correo'].touched && formlogin.controls['correo'].errors?.['required']">El campo correo esta vacio</div>
+      <div class="invalido" *ngIf="formlogin.controls['correo'].touched && formlogin.controls['correo'].errors?.['email']">El formato no es el correcto</div>
+      </div>
+      <div class="form-floating">
+        <input formControlName="pass" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+        <div class="valido" *ngIf="formlogin.controls['pass'].touched && formlogin.controls['pass'].valid">Valido</div>
+        <div class="invalido" *ngIf="formlogin.controls['pass'].touched && formlogin.controls['pass'].errors?.['required']">El campo contraseña no puede ir vacio</div>
+        <div class="invalido" *ngIf="formlogin.controls['pass'].touched && formlogin.controls['pass'].errors?.['minlength']">Debe de ser de 10 digitos</div>
+      </div>
+  
+      <div class="checkbox mb-3">
+        <label>
+          <input formControlName="recordar" type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="formlogin.invalid">Sign in</button>
+      
+    </form>
+  </main>
+
+
